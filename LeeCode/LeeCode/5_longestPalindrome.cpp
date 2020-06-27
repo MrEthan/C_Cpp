@@ -99,6 +99,7 @@ public:
 	}
 };
 
+/*
 int main(int argc, char** argv) {
 	Solution solution;
 	string res = "";
@@ -106,3 +107,4 @@ int main(int argc, char** argv) {
 	cout << res << endl;
 	return 0;
 }
+*/
