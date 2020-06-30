@@ -94,7 +94,7 @@ public:
         nums[index2] = temp;
     }
 };
-
+/*
 int main(int argc, char** argv) {
 	Solution solution;
 	vector<int> nums = { 3,2,1,5,6,4 };
@@ -103,3 +103,4 @@ int main(int argc, char** argv) {
 	cout << endl << ans << endl;
 	return 0;
 }
+*/
