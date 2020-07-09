@@ -157,14 +157,39 @@ public:
 		}
 		return min;
 	}
+
+	//二分法
+	int findMin1(vector<int>& nums) {
+		int size = nums.size();
+		int min = INT_MAX;
+
+		if (nums[0] < nums[size - 1]) {
+			return nums[0];
+		}
+
+		int left = 0, right = size - 1;
+		while (left < right) {
+			int mid = left + (right - left) / 2;
+			if (nums[mid] < nums[right]) {
+				//mid中间值比右侧小，说明右侧递增，最小值肯定位于左侧区间[left, mid]
+				right = mid;
+			}
+			else {
+				//mid中间值比右侧大，说明旋转点在右侧区间，[mid+1,right]
+				left = mid + 1;
+			}
+		}
+
+		return nums[left];
+	}
 #pragma endregion
 
 };
 
 int main(char argc, char** argv) {
-	vector<int> nums = { };
+	vector<int> nums = { 4,5,6,7,0,1,2 };
 	BinarySearch b;
-	int res = b.searchRotateArray(nums, 2);
+	int res = b.findMin1(nums);
 	cout << res << endl;
 	//cout << res[0] << ',' << res[1] << endl;
 	
