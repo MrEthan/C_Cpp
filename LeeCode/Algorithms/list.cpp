@@ -162,38 +162,37 @@ public:
     }
 };
 
-/*
-int main(char argc, char** argv) {
-    Solution solution;
-    ListNode* head = new ListNode(0);
-    const int max = 10000;
-    
-    srand((unsigned int)time(NULL));
-    for (int i = 0; i < max; i++) {
-        solution.addHeadList(&head, rand() % INT_MAX);
-    }
 
-    //solution.printList(head);
-    auto start = chrono::steady_clock::now();
-    head = solution.insertionSortList0(head);
-    auto end = chrono::steady_clock::now();
-    chrono::duration<double, micro> elapsed = end - start; // std::micro 表示以微秒为时间单位
-    cout << "insertionSortList0 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
-
-    start = chrono::steady_clock::now();
-    head = solution.insertionSortList1(head);
-    end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro 表示以微秒为时间单位
-    cout << "insertionSortList1 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
-
-    start = chrono::steady_clock::now();
-    head = solution.insertionSortList2(head);
-    end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro 表示以微秒为时间单位
-    cout << "insertionSortList2 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
-    
-    //solution.printList(head);
-
-	return 0;
-};
-*/
+//int main(char argc, char** argv) {
+//    Solution solution;
+//    ListNode* head = new ListNode(0);
+//    const int max = 10000;
+//
+//    srand((unsigned int)time(NULL));
+//    for (int i = 0; i < max; i++) {
+//        solution.addHeadList(&head, rand() % INT_MAX);
+//    }
+//
+//    //solution.printList(head);
+//    auto start = chrono::steady_clock::now();
+//    head = solution.insertionSortList0(head);
+//    auto end = chrono::steady_clock::now();
+//    chrono::duration<double, micro> elapsed = end - start; // std::micro 表示以微秒为时间单位
+//    cout << "insertionSortList0 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
+//
+//    start = chrono::steady_clock::now();
+//    head = solution.insertionSortList1(head);
+//    end = chrono::steady_clock::now();
+//    elapsed = end - start; // std::micro 表示以微秒为时间单位
+//    cout << "insertionSortList1 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
+//
+//    start = chrono::steady_clock::now();
+//    head = solution.insertionSortList2(head);
+//    end = chrono::steady_clock::now();
+//    elapsed = end - start; // std::micro 表示以微秒为时间单位
+//    cout << "insertionSortList2 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
+//
+//    //solution.printList(head);
+//
+//	return 0;
+//};

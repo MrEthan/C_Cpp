@@ -14,7 +14,7 @@ using namespace std;
 输入：
 [2, 3, 1, 0, 2, 5, 3]
 输出：2 或 3
- 
+
 限制：
 2 <= n <= 100000
 https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/

@@ -6,7 +6,7 @@ using namespace std;
 
 class Solution {
 public:
-    //Ñ¡ÔñÅÅĞò£¬Ã¿Ò»ÂÖÉ¨ÃèÕÒµ½Ò»¸ö×îĞ¡ÔªËØ
+    //é€‰æ‹©æ’åºï¼Œæ¯ä¸€è½®æ‰«ææ‰¾åˆ°ä¸€ä¸ªæœ€å°å…ƒç´ 
     vector<int> selectSort(vector<int>& nums) {
         int n = nums.size();
 
@@ -23,7 +23,7 @@ public:
         return nums;
     }
 
-    //²åÈëÅÅĞò£¬°ÑĞÂÊı²åÈëÇ°ÃæÒÑ¾­ÅÅºÃĞòµÄĞòÁĞÖĞ
+    //æ’å…¥æ’åºï¼ŒæŠŠæ–°æ•°æ’å…¥å‰é¢å·²ç»æ’å¥½åºçš„åºåˆ—ä¸­
     vector<int> insertSort(vector<int>& nums) {
         int n = nums.size();
 
@@ -40,26 +40,26 @@ public:
         return nums;
     }
 
-    //µİ¹éÊµÏÖ¹é²¢ÅÅĞò
+    //é€’å½’å®ç°å½’å¹¶æ’åº
     void mergeSort(vector<int>& nums, int left, int right) {
         int n = nums.size();
-        //mid = (left + right)/2 ÔÚleftºÍrightÎª´óÊıÊ±£¬¿ÉÄÜµ¼ÖÂÒç³ö
+        //mid = (left + right)/2 åœ¨leftå’Œrightä¸ºå¤§æ•°æ—¶ï¼Œå¯èƒ½å¯¼è‡´æº¢å‡º
         int mid = left + (right - left) / 2;
 
-        //µİ¹é½áÊøÌõ¼ş
+        //é€’å½’ç»“æŸæ¡ä»¶
         if (left >= right) {
             return;
         }
 
-        //¹é²¢±ÕÇø¼ä [left, mid] [mid+1, right]
+        //å½’å¹¶é—­åŒºé—´ [left, mid] [mid+1, right]
         mergeSort(nums, left, mid);
         mergeSort(nums, mid + 1, right);
-        //ºÏ²¢ÓĞĞòÇø¼ä
+        //åˆå¹¶æœ‰åºåŒºé—´
         mergeTwoSortedArray(nums, left, mid, right);
         return ;
     }
 
-    //¿ìËÙÅÅĞò
+    //å¿«é€Ÿæ’åº
     vector<int> quickSort(vector<int>& nums) {
         quick_sort(nums, 0, (int)nums.size() - 1);
         return nums;
@@ -77,30 +77,30 @@ private:
         int length = right - left + 1;
         //vector<int> temp(length, 0);
         vector<int> temp;
-        //¸´ÖÆÔ­Êı×é
+        //å¤åˆ¶åŸæ•°ç»„
         for (int i = 0; i < length; i++) {
             //temp[i] = nums[left + i];
             temp.push_back(nums[left + i]);
             //cout << nums[i] << ',';
         }
         //cout << endl;
-        //×óÊı×éÆğÊ¼ÏÂ±ê
+        //å·¦æ•°ç»„èµ·å§‹ä¸‹æ ‡
         int l = 0;
-        //ÓÒÊı×éÆğÊ¼ÏÂ±ê
+        //å³æ•°ç»„èµ·å§‹ä¸‹æ ‡
         int r = mid - left + 1;
 
         for (int i = 0; i < length; i++) {
-            //Èç¹û×óÊı×éÒÑ¾­ÓÃÍê£¬Ôò½ö¸´ÖÆÓÒ²àÊı×é
+            //å¦‚æœå·¦æ•°ç»„å·²ç»ç”¨å®Œï¼Œåˆ™ä»…å¤åˆ¶å³ä¾§æ•°ç»„
             if (l > mid - left) {
                 nums[i + left] = temp[r];
                 r++;
             }
-            //Èç¹ûÓÒÊı×éÒÑ¾­ÓÃÍê£¬Ôò½ö¸´ÖÆ×ó²àÊı×é
+            //å¦‚æœå³æ•°ç»„å·²ç»ç”¨å®Œï¼Œåˆ™ä»…å¤åˆ¶å·¦ä¾§æ•°ç»„
             else if (r > length - 1) {
                 nums[i + left] = temp[l];
                 l++;
             }
-            //Ñ¡Ôñ×ó²àºÍÓÒ²à½ÏĞ¡µÄÊı×é¸´ÖÆ
+            //é€‰æ‹©å·¦ä¾§å’Œå³ä¾§è¾ƒå°çš„æ•°ç»„å¤åˆ¶
             else if (temp[l] < temp[r]) {
                 nums[i + left] = temp[l];
                 l++;
@@ -112,7 +112,7 @@ private:
         }
     }
     
-    //¿ìËÙÅÅĞò
+    //å¿«é€Ÿæ’åº
     void quick_sort(vector<int>& nums, int left, int right) {
         if (left < right) {
             //int pivot = partition(nums, left, right);
@@ -124,9 +124,9 @@ private:
         return;
     }
 
-    //»ù´¡·ÖÖÎËã·¨
+    //åŸºç¡€åˆ†æ²»ç®—æ³•
     int partition(vector<int>& nums, int left, int right) {
-        //ÅÅ³ıÌØÊâÊı¾İÓ°Ïì£¬Èçµ¹ĞòÊı×é£¬Ëæ»úÑ¡È¡²Î¿¼Öµ
+        //æ’é™¤ç‰¹æ®Šæ•°æ®å½±å“ï¼Œå¦‚å€’åºæ•°ç»„ï¼Œéšæœºé€‰å–å‚è€ƒå€¼
         int randIndex = rand() % (right - left + 1) + left;
         swap(nums, left, randIndex);
 
@@ -135,23 +135,23 @@ private:
         
         for (int i = left + 1; i <= right; i++) {
             if (nums[i] < mid) {
-                //×ó±ßÇø¼äÔö¼Ó¿ÕÎ»£¬°Ñ±È²Î¿¼µãĞ¡µÄÖµÒÆ¶¯µ½×ó±ßÇø¼ä
+                //å·¦è¾¹åŒºé—´å¢åŠ ç©ºä½ï¼ŒæŠŠæ¯”å‚è€ƒç‚¹å°çš„å€¼ç§»åŠ¨åˆ°å·¦è¾¹åŒºé—´
                 pivot++;
                 swap(nums, i, pivot);
             }
         }
-        //°Ñ²Î¿¼µãµÄÖµ½»»»µ½²Î¿¼ÏÂ±êÎ»ÖÃ
+        //æŠŠå‚è€ƒç‚¹çš„å€¼äº¤æ¢åˆ°å‚è€ƒä¸‹æ ‡ä½ç½®
         swap(nums, left, pivot);
         return pivot;
     }
 
-    //Ë«Â··ÖÖÎ¿ìËÙÅÅĞò(ÍÚ¿ÓÌîÊı·¨)
-    //1¡¢Ñ¡È¡²Î¿¼µã£¬×÷ÎªµÚÒ»¸ö¿Ó
-    //2¡¢´ÓÓÒÏò×óÕÒ±È²Î¿¼µãĞ¡µÄÊı£¬·Åµ½×ó±ßµÄ¿Ó£¬Í¬Ê±£¬ÓÒ±ßÍÚ³öÒ»¸öĞÂµÄ¿Ó
-    //3¡¢´Ó×óÏòÓÒÕÒ±È²Î¿¼µã´óµÄÊı£¬·Åµ½ÓÒ±ßµÄ¿Ó£¬Í¬Ê±£¬×ó±ßÍÚ³öÒ»¸öĞÂµÄ¿Ó
-    //4¡¢°Ñ²Î¿¼µãµÄÖµ·ÅÈë×îºóÒ»¸ö¿Ó
+    //åŒè·¯åˆ†æ²»å¿«é€Ÿæ’åº(æŒ–å‘å¡«æ•°æ³•)
+    //1ã€é€‰å–å‚è€ƒç‚¹ï¼Œä½œä¸ºç¬¬ä¸€ä¸ªå‘
+    //2ã€ä»å³å‘å·¦æ‰¾æ¯”å‚è€ƒç‚¹å°çš„æ•°ï¼Œæ”¾åˆ°å·¦è¾¹çš„å‘ï¼ŒåŒæ—¶ï¼Œå³è¾¹æŒ–å‡ºä¸€ä¸ªæ–°çš„å‘
+    //3ã€ä»å·¦å‘å³æ‰¾æ¯”å‚è€ƒç‚¹å¤§çš„æ•°ï¼Œæ”¾åˆ°å³è¾¹çš„å‘ï¼ŒåŒæ—¶ï¼Œå·¦è¾¹æŒ–å‡ºä¸€ä¸ªæ–°çš„å‘
+    //4ã€æŠŠå‚è€ƒç‚¹çš„å€¼æ”¾å…¥æœ€åä¸€ä¸ªå‘
     int partitionDouble(vector<int>& nums, int left, int right) {
-        //ÅÅ³ıÌØÊâÊı¾İÓ°Ïì£¬Èçµ¹ĞòÊı×é£¬Ëæ»úÑ¡È¡²Î¿¼Öµ
+        //æ’é™¤ç‰¹æ®Šæ•°æ®å½±å“ï¼Œå¦‚å€’åºæ•°ç»„ï¼Œéšæœºé€‰å–å‚è€ƒå€¼
         int randIndex = rand() % (right - left + 1) + left;
         swap(nums, left, randIndex);
 
@@ -159,7 +159,7 @@ private:
         int i = left, j = right;
 
         while (i < j) {
-            //´ÓÓÒ¿ªÊ¼£¬ÕÒµ½±ÈmidĞ¡µÄÊı£¬Ìîµ½×ó±ßµÄ¿Ó
+            //ä»å³å¼€å§‹ï¼Œæ‰¾åˆ°æ¯”midå°çš„æ•°ï¼Œå¡«åˆ°å·¦è¾¹çš„å‘
             while ((i < j) && (nums[j] >= mid)) {
                 j--;
             }
@@ -181,16 +181,16 @@ private:
         return i;
     }
 
-    //Ë«Â·¿ìÅÅÖ®Ö¸Õë¶Ô×²
+    //åŒè·¯å¿«æ’ä¹‹æŒ‡é’ˆå¯¹æ’
     int patitionDoublePointer(vector<int>& nums, int left, int right) {
-        //ÅÅ³ıÌØÊâÊı¾İÓ°Ïì£¬Èçµ¹ĞòÊı×é£¬Ëæ»úÑ¡È¡²Î¿¼Öµ
+        //æ’é™¤ç‰¹æ®Šæ•°æ®å½±å“ï¼Œå¦‚å€’åºæ•°ç»„ï¼Œéšæœºé€‰å–å‚è€ƒå€¼
         int randIndex = rand() % (right - left + 1) + left;
         swap(nums, left, randIndex);
 
         int mid = nums[left];
         int lt = left + 1;
         int gt = right;
-        //Ñ­»·²»±äÁ¿
+        //å¾ªç¯ä¸å˜é‡
         //all in [left,lt) <= pivot
         //all in (gt, right] >= pivot
         while (true) {
@@ -205,7 +205,7 @@ private:
                 break;
             }
 
-            // Ï¸½Ú£ºÏàµÈµÄÔªËØÍ¨¹ı½»»»£¬µÈ¸ÅÂÊ·Öµ½Êı×éµÄÁ½±ß
+            // ç»†èŠ‚ï¼šç›¸ç­‰çš„å…ƒç´ é€šè¿‡äº¤æ¢ï¼Œç­‰æ¦‚ç‡åˆ†åˆ°æ•°ç»„çš„ä¸¤è¾¹
             swap(nums, lt, gt);
             lt++;
             gt--;
@@ -227,43 +227,43 @@ int main(char argc, char** argv) {
         v_init.push_back(rand());
     }
     auto end = chrono::steady_clock::now();
-    chrono::duration<double, micro> elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "Êı¾İÉú³É " << "time: " << elapsed.count() << "us" << endl;
+    chrono::duration<double, micro> elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "æ•°æ®ç”Ÿæˆ " << "time: " << elapsed.count() << "us" << endl;
 
     v.assign(v_init.begin(), v_init.end());
     start = chrono::steady_clock::now();
     sort(v.begin(), v.end(), greater<int>());
     end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "sortÅÅĞò " << "time: " << elapsed.count() << "us" << endl;
+    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "sortæ’åº " << "time: " << elapsed.count() << "us" << endl;
 
     v.assign(v_init.begin(), v_init.end());
     start = chrono::steady_clock::now();
     solution.selectSort(v);
     end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "Ñ¡ÔñÅÅĞò " << "time: " << elapsed.count() << "us" << endl;
+    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "é€‰æ‹©æ’åº " << "time: " << elapsed.count() << "us" << endl;
 
     v.assign(v_init.begin(), v_init.end());
     start = chrono::steady_clock::now();
     solution.insertSort(v);
     end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "²åÈëÅÅĞò " << "time: " << elapsed.count() << "us" << endl;
+    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "æ’å…¥æ’åº " << "time: " << elapsed.count() << "us" << endl;
 
     v.assign(v_init.begin(), v_init.end());
     start = chrono::steady_clock::now();
     solution.mergeSort(v, 0, v.size() - 1);
     end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "¹é²¢ÅÅĞò " << "time: " << elapsed.count() << "us" << endl;
+    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "å½’å¹¶æ’åº " << "time: " << elapsed.count() << "us" << endl;
 
     v.assign(v_init.begin(), v_init.end());
     start = chrono::steady_clock::now();
     solution.quickSort(v);
     end = chrono::steady_clock::now();
-    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
-    cout << "¿ìËÙÅÅĞò " << "time: " << elapsed.count() << "us" << endl;
+    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
+    cout << "å¿«é€Ÿæ’åº " << "time: " << elapsed.count() << "us" << endl;
 
     return 0;
 }
