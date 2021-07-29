@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(practice
         main.cpp
-        my_smart_ptr.cpp my_non_member.cpp)
+        my_smart_ptr.cpp my_non_member.cpp ../Test/main.cpp ../Test/LeeCode/AlgorithmsTest.cpp ../Test/LeeCode/LeeCodeTest.cpp ../Test/Practice/PracticeTest.cpp)
