@@ -4,6 +4,8 @@
 #include "LeeCode/middle.h"
 #include <vector>
 
+using namespace std;
+
 string MiddleSolution::longestPalindrome(string s)
 {
     int n = s.size();

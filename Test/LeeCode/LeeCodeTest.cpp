@@ -3,7 +3,11 @@
 //
 #include "LeeCode/hard.h"
 #include "LeeCode/middle.h"
+#include "LeeCode/simple.h"
+#include "Utils/TimingTest.h"
 #include "gtest/gtest.h"
+
+using namespace std;
 
 namespace {
 TEST(LeeCodeHardTest, firstMissingPostive)
@@ -46,4 +50,17 @@ TEST(LeeCodeMiddleTest, longestPalindrome)
     ASSERT_STREQ("bb", res.c_str());
 }
 
+class LeeCodeSimpleTest : public TimingTest {
+};
+
+TEST_F(LeeCodeSimpleTest, findRepeatNumber)
+{
+    SimpleSolution solution;
+	vector<int> nums = { 2, 3, 1, 0, 2, 5, 3 };
+	int ans = 0;
+	ans = solution.findRepeatNumber(nums);
+	cout << ans << endl;
+    GTEST_ASSERT_TRUE(ans == 2 || ans == 3);
+    usleep(200 * 1000);
+}
 } // namespace

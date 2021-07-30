@@ -33,4 +33,6 @@
 
 .idea
 .vscode
+build
 cmake-build-debug
+Test/Bin/gtester

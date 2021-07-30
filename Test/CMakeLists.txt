@@ -7,6 +7,7 @@ set(CMAKE_C_FLAGS -g)
 set(CMAKE_CXX_FLAGS -g)
 
 #add_definitions(-std=gnu++11)
+include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/../ThirdLib/googletest/googletest/include)
 include_directories(${PROJECT_SOURCE_DIR}/../LeeCode/Include)
 
@@ -17,6 +18,7 @@ aux_source_directory(${PROJECT_SOURCE_DIR}/../LeeCode/Src/LeeCode TestSrc)
 aux_source_directory(. TestSrc)
 aux_source_directory(LeeCode TestSrc)
 aux_source_directory(Practice TestSrc)
+aux_source_directory(Utils TestSrc)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/../ThirdLib/googletest googletest_dir)
 

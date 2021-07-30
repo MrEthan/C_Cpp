@@ -6,7 +6,6 @@
 #define C_CPP_MIDDLE_H
 
 #include <string>
-using namespace std;
 
 class MiddleSolution {
   public:
@@ -23,11 +22,11 @@ class MiddleSolution {
     输入: "cbbd"
     输出: "bb"
     */
-    string longestPalindrome(string s); /// 动态规划法求最长回文子串
+    std::string longestPalindrome(std::string s); /// 动态规划法求最长回文子串
     /// 暴力法求最长回文子串
-    string longestPalindrome2(string s);
+    std::string longestPalindrome2(std::string s);
   private:
-    bool validPalindrome(string s, int left, int right);
+    bool validPalindrome(std::string s, int left, int right);
 };
 
 #endif // C_CPP_MIDDLE_H
