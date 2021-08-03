@@ -10,6 +10,11 @@
 using namespace std;
 
 namespace {
+class LeeCodeSimpleTest : public TimingTest {
+};
+class LeeCodeMiddleTest : public TimingTest {
+};
+
 TEST(LeeCodeHardTest, firstMissingPostive)
 {
     HardSolution solution;
@@ -28,7 +33,7 @@ TEST(LeeCodeHardTest, firstMissingPostive)
     GTEST_ASSERT_EQ(1, ans);
 }
 
-TEST(LeeCodeMiddleTest, longestPalindrome)
+TEST_F(LeeCodeMiddleTest, longestPalindrome)
 {
     MiddleSolution solution;
     string res = "";
@@ -50,17 +55,50 @@ TEST(LeeCodeMiddleTest, longestPalindrome)
     ASSERT_STREQ("bb", res.c_str());
 }
 
-class LeeCodeSimpleTest : public TimingTest {
-};
-
 TEST_F(LeeCodeSimpleTest, findRepeatNumber)
 {
     SimpleSolution solution;
-	vector<int> nums = { 2, 3, 1, 0, 2, 5, 3 };
-	int ans = 0;
-	ans = solution.findRepeatNumber(nums);
-	cout << ans << endl;
+    vector<int> nums = {2, 3, 1, 0, 2, 5, 3, 4, 3, 0};
+    int ans          = 0;
+    ans              = solution.findRepeatNumber(nums);
+    cout << ans << endl;
     GTEST_ASSERT_TRUE(ans == 2 || ans == 3);
-    usleep(200 * 1000);
 }
+
+TEST_F(LeeCodeMiddleTest, findKthLargest)
+{
+    MiddleSolution solution;
+    vector<int> nums = {3, 2, 1, 5, 6, 4};
+    int ans          = solution.findKthLargest(nums, 2);
+    cout << ans << endl;
+    GTEST_ASSERT_TRUE(ans == 5);
+}
+
+TEST_F(LeeCodeMiddleTest, findKthLargest2)
+{
+    MiddleSolution solution;
+    vector<int> nums = {3, 2, 1, 5, 6, 4};
+    int ans          = solution.findKthLargest2(nums, 2);
+    cout << ans << endl;
+    GTEST_ASSERT_TRUE(ans == 5);
+}
+
+TEST_F(LeeCodeMiddleTest, minSubArrayLen)
+{
+    MiddleSolution solution;
+    vector<int> nums = {2, 3, 1, 2, 4, 3};
+    int ans          = solution.minSubArrayLen(7, nums);
+    cout << ans << endl;
+    GTEST_ASSERT_TRUE(ans == 2);
+}
+
+TEST_F(LeeCodeMiddleTest, minSubArrayLen2)
+{
+    MiddleSolution solution;
+    vector<int> nums = {2, 3, 1, 2, 4, 3};
+    int ans          = solution.minSubArrayLen2(7, nums);
+    cout << ans << endl;
+    GTEST_ASSERT_TRUE(ans == 2);
+}
+
 } // namespace
