@@ -65,6 +65,20 @@ TEST_F(LeeCodeSimpleTest, findRepeatNumber)
     GTEST_ASSERT_TRUE(ans == 2 || ans == 3);
 }
 
+TEST_F(LeeCodeSimpleTest, findContentChildren)
+{
+    SimpleSolution solution;
+    vector<int> children = {1, 2, 3};
+    vector<int> cookies  = {1, 1};
+    int ans              = solution.findContentChildren(children, cookies);
+    GTEST_ASSERT_EQ(1, ans);
+
+    children = {1, 2};
+    cookies  = {1, 2, 3};
+    ans  = solution.findContentChildren(children, cookies);
+    GTEST_ASSERT_EQ(2, ans);
+}
+
 TEST_F(LeeCodeMiddleTest, findKthLargest)
 {
     MiddleSolution solution;

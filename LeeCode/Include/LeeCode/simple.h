@@ -6,6 +6,7 @@
 #define C_CPP_SIMPLE_H
 
 #include <vector>
+using namespace std;
 
 class SimpleSolution {
   public:
@@ -23,6 +24,16 @@ class SimpleSolution {
         https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
     */
     int findRepeatNumber(std::vector<int>& nums);
+
+    /**
+     * 455 分发饼干 https://leetcode-cn.com/problems/assign-cookies/
+     * @param g 胃口值
+     * @param s 饼干大小
+     * @return 能满足的最多孩子数
+     * 贪心算法
+     * 核心思想：把最小的饼干分给饥饿度最小的孩子，从而满足最多数量的孩子
+     */
+    int findContentChildren(vector<int>& g, vector<int>& s);
 };
 
 #endif // C_CPP_SIMPLE_H
