@@ -31,11 +31,11 @@ class TimingTest : public testing::Test {
         // well?
         EXPECT_TRUE(end_time.tv_sec - start_time_.tv_sec <= 5) << "The test took too long.";
         if (end_time.tv_usec >= start_time_.tv_usec) {
-            printf("time cost: %ld.%lds\n", end_time.tv_sec - start_time_.tv_sec,
-                   (end_time.tv_usec - start_time_.tv_usec) / 1000);
+            printf("time cost: %ld.%06lds\n", end_time.tv_sec - start_time_.tv_sec,
+                   end_time.tv_usec - start_time_.tv_usec);
         } else {
-            printf("time cost: %ld.%lds\n", end_time.tv_sec - start_time_.tv_sec - 1,
-                   (end_time.tv_usec + 1 * 1000 * 1000 - start_time_.tv_usec) / 1000);
+            printf("time cost: %ld.%06lds\n", end_time.tv_sec - start_time_.tv_sec - 1,
+                   end_time.tv_usec + 1 * 1000 * 1000 - start_time_.tv_usec);
         }
     }
 
