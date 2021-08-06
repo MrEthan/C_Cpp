@@ -15,4 +15,4 @@ set(LIBRARY_OUTPUT_PATH  ${PROJECT_SOURCE_DIR}/Lib)
 message(STATUS "Lib path: ${LIBRARY_OUTPUT_PATH}")
 # 生成静态库
 add_library(LeeCodeStatic STATIC ${LeeCodeSrc})
-add_library(LeeCode SHARED ${LeeCodeSrc})
+# add_library(LeeCode SHARED ${LeeCodeSrc})

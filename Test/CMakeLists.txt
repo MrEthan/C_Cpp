@@ -13,10 +13,12 @@ include_directories(${PROJECT_SOURCE_DIR}/../LeeCode/Include)
 
 # 包含待测试文件
 aux_source_directory(${PROJECT_SOURCE_DIR}/../LeeCode/Src/LeeCode TestSrc)
+aux_source_directory(${PROJECT_SOURCE_DIR}/../LeeCode/Src/Algorithms TestSrc)
 
 # 包含测试文件
 aux_source_directory(. TestSrc)
 aux_source_directory(LeeCode TestSrc)
+aux_source_directory(LeeCode/Algorithms TestSrc)
 aux_source_directory(Practice TestSrc)
 aux_source_directory(Utils TestSrc)
 
