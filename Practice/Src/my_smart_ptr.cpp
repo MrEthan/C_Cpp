@@ -4,8 +4,11 @@
 #include "my_smart_ptr.h"
 #include <memory>
 #include <string>
+
 using namespace std;
+
 namespace practice {
+
 int smart_ptr()
 {
     std::shared_ptr<Report> ps1(new Report("using shared_ptr"));
@@ -16,4 +19,5 @@ int smart_ptr()
 
     return 0;
 }
+
 } // namespace practice

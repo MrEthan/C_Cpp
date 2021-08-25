@@ -10,10 +10,12 @@ set(CMAKE_CXX_FLAGS -g)
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/../ThirdLib/googletest/googletest/include)
 include_directories(${PROJECT_SOURCE_DIR}/../LeeCode/Include)
+include_directories(${PROJECT_SOURCE_DIR}/../Practice/Include)
 
 # 包含待测试文件
 aux_source_directory(${PROJECT_SOURCE_DIR}/../LeeCode/Src/LeeCode TestSrc)
 aux_source_directory(${PROJECT_SOURCE_DIR}/../LeeCode/Src/Algorithms TestSrc)
+aux_source_directory(${PROJECT_SOURCE_DIR}/../Practice/Src TestSrc)
 
 # 包含测试文件
 aux_source_directory(. TestSrc)

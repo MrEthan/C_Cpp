@@ -4,6 +4,7 @@
 
 #include "my_non_member.h"
 #include <iostream>
+
 namespace practice {
 
 Rational::Rational(int numerator, int denominator)

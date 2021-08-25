@@ -26,8 +26,8 @@ class Report {
   private:
     std::string str;
 };
+
 int smart_ptr();
-int smart_ptr2();
 
 } // namespace practice
 
