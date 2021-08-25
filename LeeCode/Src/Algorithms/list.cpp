@@ -24,26 +24,26 @@ public:
         ListNode* prev = head;
         ListNode* p = head->next;
 
-        //pÎªÎ´ÅÅĞò½Úµã
+        //pä¸ºæœªæ’åºèŠ‚ç‚¹
         while (p) {
-            //Ìø¹ı±¾ÉíÒÑ¾­ÓĞĞò½Úµã
+            //è·³è¿‡æœ¬èº«å·²ç»æœ‰åºèŠ‚ç‚¹
             if (p->val >= prev->val) {
                 prev = p;
                 p = p->next;
             }
             else {
-                //pÕªÁ´
+                //pæ‘˜é“¾
                 prev->next = p->next;
                 work = p;
                 p = p->next;
-                //´ÓÍ·¿ªÊ¼ÕÒ±ÈpĞ¡µÄ½Úµã£¬²åÈëµ½ËüµÄÇ°Ãæ
+                //ä»å¤´å¼€å§‹æ‰¾æ¯”på°çš„èŠ‚ç‚¹ï¼Œæ’å…¥åˆ°å®ƒçš„å‰é¢
                 if (head->val > work->val) {
-                    //²åÈëµ½Í·½ÚµãÖ®Ç°
+                    //æ’å…¥åˆ°å¤´èŠ‚ç‚¹ä¹‹å‰
                     work->next = head;
                     head = work;
                 }
                 else {
-                    //²åÈëµ½Í·½Úµãºó
+                    //æ’å…¥åˆ°å¤´èŠ‚ç‚¹å
                     ListNode* temp = head;
                     while (temp->next->val <= work->val) {
                         temp = temp->next;
@@ -57,7 +57,7 @@ public:
         return head;
     }
 
-    //Ê¹ÓÃÉÚ±ø½Úµã£¬ÎŞĞèÌØÊâ´¦ÀíÍ·½áµã¸Ä±äµÄÇé¿ö
+    //ä½¿ç”¨å“¨å…µèŠ‚ç‚¹ï¼Œæ— éœ€ç‰¹æ®Šå¤„ç†å¤´ç»“ç‚¹æ”¹å˜çš„æƒ…å†µ
     ListNode* insertionSortList1(ListNode* head) {
         if (!head || !head->next) {
             return head;
@@ -66,27 +66,27 @@ public:
         ListNode* cur = NULL, *prev = NULL, *ans = NULL;
         
         dummy_head->next = head;
-        prev = head; //prevÖ¸Ïòµ±Ç°ÒÑÅÅĞòµÄ×î´ó½Úµã
+        prev = head; //prevæŒ‡å‘å½“å‰å·²æ’åºçš„æœ€å¤§èŠ‚ç‚¹
         cur = head->next;
 
         while (cur) {
             if (cur->val >= prev->val) {
-                //Ìø¹ıÒÑÅÅĞò²¿·Ö
+                //è·³è¿‡å·²æ’åºéƒ¨åˆ†
                 prev = cur;
                 cur = cur->next;
                 continue;
             }
-            //cur½ÚµãÕªÁ´
+            //curèŠ‚ç‚¹æ‘˜é“¾
             prev->next = cur->next;
             ListNode* p = dummy_head;
-            //´ÓÍ·¿ªÊ¼²éÕÒºÏÊÊÎ»ÖÃ²åÈë
+            //ä»å¤´å¼€å§‹æŸ¥æ‰¾åˆé€‚ä½ç½®æ’å…¥
             while (p->next->val <= cur->val) {
                 p = p->next;
             }
-            //ÕÒµ½±Ècur´óµÄ½ÚµãÎªp->next£¬°Ñcur²åÈëµ½p½ÚµãºóÃæ
+            //æ‰¾åˆ°æ¯”curå¤§çš„èŠ‚ç‚¹ä¸ºp->nextï¼ŒæŠŠcuræ’å…¥åˆ°pèŠ‚ç‚¹åé¢
             cur->next = p->next;
             p->next = cur;
-            //¼ÌĞø±éÀú
+            //ç»§ç»­éå†
             cur = prev->next;
         }
         ans = dummy_head->next;
@@ -96,7 +96,7 @@ public:
         return ans;
     }
 
-    //ĞÂ½¨Á´±í£¬´ÓÔ­Á´±íÈ¡½Úµã²åÈëĞÂÁ´±í
+    //æ–°å»ºé“¾è¡¨ï¼Œä»åŸé“¾è¡¨å–èŠ‚ç‚¹æ’å…¥æ–°é“¾è¡¨
     ListNode* insertionSortList2(ListNode* head) {
         if (!head || !head->next) {
             return head;
@@ -106,19 +106,19 @@ public:
         ListNode* dummy_head = new ListNode(0);
         ListNode* ans = NULL;
 
-        /* ÕªÏÂµÚÒ»¸ö½Úµã²åÈëĞÂÁ´±í */
+        /* æ‘˜ä¸‹ç¬¬ä¸€ä¸ªèŠ‚ç‚¹æ’å…¥æ–°é“¾è¡¨ */
         dummy_head->next = head;
         head = head->next;
         dummy_head->next->next = NULL;
 
         while (head) {
-            //´ÓÔ­Á´±íÈ¡½Úµã
+            //ä»åŸé“¾è¡¨å–èŠ‚ç‚¹
             oldNode = head;
             head = head->next;
-            //¶Ï¿ªÕªÏÂµÄ½ÚµãÓëÔ­Á´±íµÄÁ¬½Ó
+            //æ–­å¼€æ‘˜ä¸‹çš„èŠ‚ç‚¹ä¸åŸé“¾è¡¨çš„è¿æ¥
             oldNode->next = NULL;
 
-            //°Ñ½Úµã°´Ë³Ğò²åÈëĞÂÁ´±í
+            //æŠŠèŠ‚ç‚¹æŒ‰é¡ºåºæ’å…¥æ–°é“¾è¡¨
             ListNode* p = dummy_head->next;
             ListNode* prev = dummy_head;
             while (p != NULL && p->val <= oldNode->val) {
@@ -177,19 +177,19 @@ public:
 //    auto start = chrono::steady_clock::now();
 //    head = solution.insertionSortList0(head);
 //    auto end = chrono::steady_clock::now();
-//    chrono::duration<double, micro> elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
+//    chrono::duration<double, micro> elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
 //    cout << "insertionSortList0 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
 //
 //    start = chrono::steady_clock::now();
 //    head = solution.insertionSortList1(head);
 //    end = chrono::steady_clock::now();
-//    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
+//    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
 //    cout << "insertionSortList1 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
 //
 //    start = chrono::steady_clock::now();
 //    head = solution.insertionSortList2(head);
 //    end = chrono::steady_clock::now();
-//    elapsed = end - start; // std::micro ±íÊ¾ÒÔÎ¢ÃëÎªÊ±¼äµ¥Î»
+//    elapsed = end - start; // std::micro è¡¨ç¤ºä»¥å¾®ç§’ä¸ºæ—¶é—´å•ä½
 //    cout << "insertionSortList2 " << "max:" << max << " time: " << elapsed.count() << "us" << endl;
 //
 //    //solution.printList(head);

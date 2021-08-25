@@ -1,11 +1,9 @@
 //
 // Created by wxm_e on 2021/7/30.
 //
-#include <iostream>
-#include <set>
-#include <string>
-#include <vector>
 #include "LeeCode/hard.h"
+#include <numeric>
+#include <vector>
 
 using namespace std;
 
@@ -34,12 +32,30 @@ int HardSolution::firstMissingPositive(vector<int> &nums)
     return ans;
 }
 
-/*
-int main(char argc, char** argv) {
-    Solution solution;
-    vector<int> v = { 1,2,0 };
-    int ans = solution.firstMissingPositive(v);
-    cout << ans << endl;
-    return 0;
+/**
+ * 贪心算法
+ * 1.所有孩子初始化为1
+ * 2.从左往右遍历，右边孩子如果比左边分高，则右边孩子的糖果为左边的+1
+ * 3.从右往左遍历，左边孩子如果比右边分高，则左边孩子的糖果为右边+1，否则不变
+ */
+int HardSolution::candy(vector<int> &ratings)
+{
+    size_t size = ratings.size();
+    vector<int> nums(size, 1);
+    for (size_t i = 1; i < size; i++) {
+        if (ratings[i] > ratings[i - 1]) {
+            nums[i] = nums[i - 1] + 1;
+        }
+    }
+    for (size_t i = size - 1; i > 0; i--) {
+        if (ratings[i - 1] > ratings[i]) {
+            nums[i - 1] = max(nums[i] + 1, nums[i - 1]);
+        }
+    }
+
+    //    for (auto it = nums.begin(); it != nums.end(); it++) {
+    //        cout << *it << ' ';
+    //    }
+    //    cout << endl;
+    return accumulate(nums.begin(), nums.end(), 0);
 }
-*/
