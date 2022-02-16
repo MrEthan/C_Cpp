@@ -1,6 +1,7 @@
 //
 // Created by wxm_e on 2021/7/29.
 //
+#include "LeeCode/32_h_longestValidParentheses.h"
 #include "LeeCode/hard.h"
 #include "LeeCode/middle.h"
 #include "LeeCode/simple.h"
@@ -136,6 +137,38 @@ TEST_F(LeeCodeHardTest, candy)
     ratings = {1, 3, 4, 5, 2};
     ans     = solution.candy(ratings);
     GTEST_ASSERT_EQ(11, ans);
+}
+
+TEST_F(LeeCodeHardTest, 32_stack)
+{
+    Solution_32_stack solution;
+    string s = ")()())";
+    int ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(4, ans);
+
+    s = "(()";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(2, ans);
+
+    s = "";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(0, ans);
+}
+
+TEST_F(LeeCodeHardTest, 32_stack_2)
+{
+    Solution_32_stack2 solution;
+    string s = ")()())";
+    int ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(4, ans);
+
+    s = "(()";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(2, ans);
+
+    s = "";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(0, ans);
 }
 
 } // namespace
