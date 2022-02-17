@@ -25,4 +25,9 @@ class Solution_32_stack2 : Solution_32 {
     int longestValidParentheses(string s) override;
 };
 
+class Solution_32_stack_and_dp : Solution_32 {
+  public:
+    int longestValidParentheses(string s) override;
+};
+
 #endif // C_CPP_32_H_LONGESTVALIDPARENTHESES_H

@@ -7,6 +7,7 @@
 #include "LeeCode/simple.h"
 #include "Utils/TimingTest.h"
 #include "gtest/gtest.h"
+#include "LeeCode/1_s_twoSums.h"
 
 using namespace std;
 
@@ -119,6 +120,18 @@ TEST_F(LeeCodeSimpleTest, findContentChildren)
     GTEST_ASSERT_EQ(2, ans);
 }
 
+
+TEST_F(LeeCodeSimpleTest, 1_hash)
+{
+    Solution_1_hash solution;
+    vector<int> nums = {2,7,11,15};
+    int target = 9;
+    vector<int> expect = {0, 1};
+    vector<int> ans;
+    ans  = solution.twoSum(nums, target);
+    GTEST_ASSERT_EQ(expect, ans);
+}
+
 TEST_F(LeeCodeHardTest, candy)
 {
     HardSolution solution;
@@ -158,6 +171,22 @@ TEST_F(LeeCodeHardTest, 32_stack)
 TEST_F(LeeCodeHardTest, 32_stack_2)
 {
     Solution_32_stack2 solution;
+    string s = ")()())";
+    int ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(4, ans);
+
+    s = "(()";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(2, ans);
+
+    s = "";
+    ans  = solution.longestValidParentheses(s);
+    GTEST_ASSERT_EQ(0, ans);
+}
+
+TEST_F(LeeCodeHardTest, 32_stack_dp)
+{
+    Solution_32_stack_and_dp solution;
     string s = ")()())";
     int ans  = solution.longestValidParentheses(s);
     GTEST_ASSERT_EQ(4, ans);

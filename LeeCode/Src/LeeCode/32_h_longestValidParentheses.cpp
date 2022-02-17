@@ -34,10 +34,10 @@ int Solution_32_stack::longestValidParentheses(string s)
         }
     }
     sort(vec.begin(), vec.end());
-//    for (auto c : vec) {
-//        cout << c << ' ';
-//    }
-//    cout << endl;
+    //    for (auto c : vec) {
+    //        cout << c << ' ';
+    //    }
+    //    cout << endl;
     // 从vec中查找最长的连续等差数列
     int max_len = 0, len = 0;
     if (vec.size() < 2) {
@@ -46,7 +46,7 @@ int Solution_32_stack::longestValidParentheses(string s)
     for (auto i = 0; i < vec.size() - 1; i++) {
         if (vec[i + 1] - vec[i] == 1) {
             len++;
-//            cout << "i:" << i << " len:" << len << endl;
+            //            cout << "i:" << i << " len:" << len << endl;
         } else {
             len = 0;
         }
@@ -89,4 +89,35 @@ int Solution_32_stack2::longestValidParentheses(string s)
         }
     }
     return max_len;
+}
+
+/**
+ * 结合栈和动态规划
+ * dp[i]表示以s[i-1]为结尾的最长合法括号子串长度
+ * 用栈存储'('的索引，即遇到‘(’则压栈
+ * 遇到‘)’时，先判断当前栈是否为空：
+ *  如果空，则表明当前括号无匹配，跳过
+ *  如果不为空，则表明有括号匹配成功，获取匹配成功的左括号索引为index为栈顶，同时更新dp[i] = dp[index - 1] + i - (index
+ * - 1)
+ */
+int Solution_32_stack_and_dp::longestValidParentheses(string s)
+{
+    auto n = s.size();
+    vector<int> dp(n + 1);
+    stack<int> stk;
+    int ans = 0;
+
+    for (auto i = 1; i <= n; i++) {
+        if (s[i - 1] == '(') {
+            stk.push(i);
+        } else {
+            if (!stk.empty()) {
+                int index = stk.top(); // 获取当前匹配成功的左括号下标
+                stk.pop();
+                dp[i] = dp[index - 1] + i - (index - 1);
+            }
+        }
+        ans = std::max(ans, dp[i]);
+    }
+    return ans;
 }

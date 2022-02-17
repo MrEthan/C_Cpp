@@ -1,7 +1,6 @@
-import os
+#!/bin/env python3
 
-
-class Solution:
+class N32Stack:
     def longestValidParentheses(self, s: str) -> int:
         if not s:
             return 0
@@ -20,4 +19,13 @@ class Solution:
 
 
 if __name__ == '__main__':
-    print('main')
+    solution = N32Stack()
+    s = ")()())"
+    ans = solution.longestValidParentheses(s)
+    assert ans == 4
+    s = "(()"
+    ans = solution.longestValidParentheses(s)
+    assert ans == 2
+    s = ""
+    ans = solution.longestValidParentheses(s)
+    assert ans == 0
