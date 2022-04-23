@@ -6,12 +6,6 @@
 #include <cstdlib>
 #include <iostream>
 
-struct TreeNode {
-    ElementType element;
-    SearchTree left;
-    SearchTree right;
-};
-
 SearchTree SearchTree_makeEmpty(SearchTree tree)
 {
     if (nullptr != tree) {
@@ -91,22 +85,60 @@ SearchTree SearchTree_insert(SearchTree tree, ElementType val)
 
     return tree;
 }
+
 SearchTree SearchTree_delete(SearchTree tree, ElementType val)
 {
     if (tree == nullptr) {
         printf("tree is empty\n");
         return nullptr;
     }
-    // 如果小于根节点，则从左边查找
-    // 如果大于根节点，则从右边查找
-    // 如果待删除的节点有两个孩子，则用右子树的最小节点代替删除的节点
-    // 如果待删除的节点只有一个孩子，则用其孩子接替他
+    TreeNode *tmpNode = nullptr;
+
+    if (val < tree->element) {
+        // 如果待删除的节点小于根节点，则肯定在左子树上
+        tree->left = SearchTree_delete(tree->left, val);
+    } else if (val > tree->element) {
+        // 如果待删除的节点大于根节点，则肯定在右子树上
+        tree->right = SearchTree_delete(tree->right, val);
+    } else if (tree->left != nullptr && tree->right != nullptr) {
+        // 如果待删除的节点有两个孩子，则用右子树的最小节点代替删除的节点（即把右子树的最小节点放到当前位置，删除右子树最小节点原先位置内容）
+        tmpNode       = SearchTree_findMin(tree->right);
+        tree->element = tmpNode->element;
+        tree->right   = SearchTree_delete(tree->right, tmpNode->element);
+    } else {
+        // 如果待删除的节点只有一个孩子，则用其孩子接替他
+        tmpNode = tree;
+        if (tree->left == nullptr) {
+            tree = tree->right;
+        } else if (tree->right == nullptr) {
+            tree = tree->left;
+        }
+        free(tmpNode);
+    }
+
+    return tree;
 }
 
 ElementType SearchTree_retrieve(Position p)
 {
     if (p == nullptr) {
-        return nullptr;
+        return -1;
     }
     return p->element;
+}
+
+void SearchTree_print(SearchTree tree)
+{
+    if (tree == nullptr) {
+        printf("tree is null\n");
+        return;
+    }
+    // 左 根 右遍历，从小到大
+    if (tree->left != nullptr) {
+        SearchTree_print(tree->left);
+    }
+    printf("%d ", tree->element);
+    if (tree->right != nullptr) {
+        SearchTree_print(tree->right);
+    }
 }
