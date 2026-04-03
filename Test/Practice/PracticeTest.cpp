@@ -3,19 +3,24 @@
 //
 #include "Utils/TimingTest.h"
 #include "my_smart_ptr.h"
+#include "switch_case.h"
 #include "gtest/gtest.h"
 
 using namespace std;
 
 namespace practiceTest {
 
-class PracticeTest : public TimingTest {
-};
+class PracticeTest : public TimingTest {};
 
 TEST_F(PracticeTest, smart_ptr)
 {
     int ret = practice::smart_ptr();
     GTEST_ASSERT_EQ(0, ret);
+}
+
+TEST_F(PracticeTest, switch_case)
+{
+    switch_case_test();
 }
 
 } // namespace practiceTest
